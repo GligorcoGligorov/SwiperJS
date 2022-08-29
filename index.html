@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <div id="logo">
+            Slider
+            <a href="#" id="logo-s">Code</a>
+        </div>
+        <span class="sign">
+            <a href="#" class="act">SIGN UP</a>
+        </span>
+        <span class="sign">
+            <a href="#">SIGN IN</a>
+        </span>
+    </header>
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper test">
+            <div class="swiper-slide fade">
+                <div class="divce">
+                    <h1>IMAGE 1</h1>
+                    <p>Web Developer <br>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, architecto.</p>
+                </div>
+                <img draggable="false" class="swiper-zoom-container" src="https://cdn.pixabay.com/photo/2016/08/03/23/09/mercedes-1568085_960_720.jpg"
+                        style="width: 100%;height: 100%;" alt="">
+            </div>
+            <div class="swiper-slide fade">
+                <div class="divce">
+                    <h1>IMAGE 2</h1>
+                    <p>Web Developer <br>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, architecto.</p>
+                </div>
+                <img draggable="false" class="swiper-zoom-container" src="https://cdn.pixabay.com/photo/2015/11/19/21/11/atlas-1052011_960_720.jpg"
+                    style="width: 100%;height: 100%;" alt="">
+            </div>
+            <div class="swiper-slide fade">
+                <div class="divce">
+                    <h1>IMAGE 3</h1>
+                    <p>Web Developer <br>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, architecto.</p>
+                </div>
+                <img draggable="false" class="swiper-zoom-container" src="https://cdn.pixabay.com/photo/2015/06/24/13/32/camera-820018_960_720.jpg"
+                    style="width: 100%;height: 100%;" alt="">
+            </div>
+         
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            zoom: {
+                maxRatio: 5,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            
+        });
+        
+        function promeni(){
+            let images = document.querySelectorAll("img")
+            
+            for(let i = 0;i < images.length;i++){
+
+                images[i].style.animationName = "none";
+
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        images[i].style.animationName = ""
+                    }, 0)
+                });
+
+            }
+        }
+
+        function promeni2() {
+                let txt = document.getElementsByClassName("divce")
+
+                for (let i = 0; i < txt.length; i++) {
+
+                    txt[i].style.animationName = "none";
+
+                    requestAnimationFrame(() => {
+                        setTimeout(() => {
+                            txt[i].style.animationName = ""
+                        }, 0)
+                    });
+
+                }
+            }
+
+        swiper.on('slideChange', function () {
+                promeni()
+                promeni2();
+            });
+        
+    </script>
+</body>
+
+</html>
